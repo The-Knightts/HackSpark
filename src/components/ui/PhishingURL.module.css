@@ -1,0 +1,330 @@
+:root {
+  --primary-gradient: linear-gradient(90deg, #00ffea, #ff00aa);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(0, 255, 234, 0.2);
+  --shadow-color: rgba(0, 255, 234, 0.1);
+  --text-color: #a0a0ff;
+  --card-bg: rgba(28, 28, 52, 0.7);
+  --hover-shadow: 0 15px 30px rgba(0, 255, 234, 0.15);
+  --input-focus-glow: 0 0 20px rgba(0, 255, 234, 0.3);
+}
+
+.container {
+  background: linear-gradient(135deg, #0f0f1e, #1c1c34);
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(0deg, rgba(0, 255, 234, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 234, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+}
+
+.title {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 234, 0.3);
+  transition: transform 0.3s ease;
+  font-size: 40px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.title:hover {
+  transform: scale(1.02);
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border: 1px solid rgba(0, 255, 234, 0.4);
+  box-shadow: var(--hover-shadow);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: 0.6s;
+  z-index: 0;
+}
+
+.card:hover::after {
+  left: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 234, 0.2);
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #00ffea;
+  box-shadow: var(--input-focus-glow);
+  outline: none;
+  transform: scale(1.01);
+}
+
+.button {
+  background: var(--primary-gradient);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.2);
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.3);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.resultCard {
+  animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.safe {
+  background: linear-gradient(135deg, rgba(0, 255, 234, 0.1), rgba(0, 255, 234, 0.2));
+  border: 1px solid rgba(0, 255, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.safe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 255, 234, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.safe:hover::before {
+  opacity: 1;
+}
+
+.suspicious {
+  background: linear-gradient(135deg, rgba(255, 0, 170, 0.1), rgba(255, 0, 170, 0.2));
+  border: 1px solid rgba(255, 0, 170, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.suspicious::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 0, 170, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.suspicious:hover::before {
+  opacity: 1;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 234, 0.2);
+  backdrop-filter: blur(15px);
+  color: var(--text-color);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.infoHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.infoIcon {
+  color: #00ffea;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 234, 0.5));
+  animation: pulse 2s infinite;
+}
+
+.infoTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stepsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 234, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 234, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 255, 234, 0.1);
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.stepDescription {
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
