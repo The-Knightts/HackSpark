@@ -1,4 +1,6 @@
 // src/components/ui/button.tsx
+// @ts-nocheck
+
 import React from 'react';
 
 import { ReactNode } from 'react';

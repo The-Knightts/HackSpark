@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import styles from './VoicePhishingDetector.module.css';

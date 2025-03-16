@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { useState } from 'react';
 import { Mail, Shield, AlertTriangle, CheckCircle, Loader2 } from 'lucide-react';

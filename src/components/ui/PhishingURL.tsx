@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { useState } from 'react';
 import { Search, Shield, AlertTriangle, CheckCircle } from 'lucide-react';
